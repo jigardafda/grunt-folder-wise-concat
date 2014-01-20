@@ -6,45 +6,60 @@
  * Licensed under the MIT license.
  */
 
-'use strict';
+/*global module,require*/
+module.exports = function (grunt) {
+	'use strict';
+	// Please see the Grunt documentation for more information regarding task
+	// creation: http://gruntjs.com/creating-tasks
 
-module.exports = function(grunt) {
+	grunt.registerMultiTask('folderWiseConcat', 'Grunt plug-in to concatenate files folder wise.', function () {
+		var path = require('path'),
+			options = this.options({
+				separator: '' // Concate Seprator
+			});
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+		// Iterate over all specified folder groups.
+		this.files.forEach(function (f) {
+			// Filtering on invalide folder path
+			f.src.filter(function (folderPath) {
+				// Warn on invalid source folder path.
+				if (!grunt.file.isDir(folderPath)) {
+					grunt.log.warn('Source folder "' + folderPath + '" not found.');
+					return false;
+				} else {
+					return true;
+				}
+			}).map(function (folderpath) {
+				var orderFilePath = path.join(folderpath, "__order.json"), files, allfs, out;
+				
+				if (grunt.file.exists(orderFilePath)) {
+					// if __order.json file exits read file order from here  
+					allfs = grunt.file.readJSON(orderFilePath);
+					if (!(allfs && allfs.files)) {
+						grunt.log.warn('Unable to read __order.json : ' + orderFilePath);
+					}
+				} else {
+					// finding all files and folders in current directory
+					allfs = grunt.file.expand(path.join(folderpath, "*"));
+				}
+				
+				// Concating all the files availble in allfs array 
+				out = allfs.filter(function (file) {
+					if (!grunt.file.isFile(file)) {
+						return false;
+					} else {
+						return true;
+					}
+				}).map(function (file) {
+					return grunt.file.read(file);
+				}).join(options.separator);
+				grunt.file.write(f.dest, out);
+			});
 
-  grunt.registerMultiTask('folderWiseConcat', 'Grunt plug-in to concatenate files folder wise.', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: '.',
-      separator: ', '
-    });
+		});
 
-    // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
-
-      // Handle options.
-      src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
-    });
-  });
+		// Print a success message.
+		grunt.log.writeln('Folder wise concated file created.');
+	});
 
 };
