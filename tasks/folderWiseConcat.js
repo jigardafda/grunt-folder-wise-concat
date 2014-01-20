@@ -15,7 +15,7 @@ module.exports = function (grunt) {
 	grunt.registerMultiTask('folderWiseConcat', 'Grunt plug-in to concatenate files folder wise.', function () {
 		var path = require('path'),
 			options = this.options({
-				separator: '' // Concate Seprator
+				separator: '\n' // Concate Seprator
 			});
 
 		// Iterate over all specified folder groups.
@@ -53,6 +53,8 @@ module.exports = function (grunt) {
 				}).map(function (file) {
 					return grunt.file.read(file);
 				}).join(options.separator);
+
+				// write concatenated file's result
 				grunt.file.write(f.dest, out);
 			});
 
