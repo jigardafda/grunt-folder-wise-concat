@@ -48,9 +48,8 @@ A string value that is used to do something with whatever.
 #### Default Options
 In this example, the default options are used to do folder wise concatination. So if the `src/folderPath` folder has the files named `Testing` and `123` file had the content `1 2 3` , the generated result would be `Testing, 1 2 3` in `dest/default_options` file.
 
-##### Folder structure
+###### input folder structure:
 ```
-input folder structure: 
 	src
 		|__folderPath
 					|_ Testing
@@ -62,7 +61,7 @@ grunt.initConfig({
   folderWiseConcat: {
     options: {},
     folders: {
-      'dest/default_options': ['src/folderPath]
+      'dest/default_options': ['src/folderPath']
     }
   }
 });
