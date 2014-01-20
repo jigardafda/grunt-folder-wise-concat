@@ -9,8 +9,6 @@
 /*global module,require*/
 module.exports = function (grunt) {
 	'use strict';
-	// Please see the Grunt documentation for more information regarding task
-	// creation: http://gruntjs.com/creating-tasks
 
 	grunt.registerMultiTask('folderWiseConcat', 'Grunt plug-in to concatenate files folder wise.', function () {
 		var path = require('path'),
@@ -63,5 +61,4 @@ module.exports = function (grunt) {
 		// Print a success message.
 		grunt.log.writeln('Folder wise concated file created.');
 	});
-
 };
