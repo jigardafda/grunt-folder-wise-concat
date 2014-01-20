@@ -41,7 +41,7 @@ grunt.initConfig({
 Type: `String`
 Default value: `'\n'` (new line)
 
-A string value that is used to do something with whatever.
+A string value used to do concat two files.
 
 ### Usage Examples
 
