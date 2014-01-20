@@ -1,24 +1,44 @@
 {
   "name": "grunt-folderWiseConcat",
-  "version": "0.0.1",
   "description": "Grunt plug-in to concatenate files folder wise.",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "version": "0.1.0",
+  "homepage": "https://github.com/jigardafda/grunt-folderWiseConcat",
+  "author": {
+    "name": "Jigar Dafda",
+    "email": "jigar.dafda@gmail.com"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/jigardafda/grunt-folderWiseConcat.git"
   },
-  "keywords": [
-    "grunt",
-    "concat",
-    "folderwise",
-    "directorywise"
-  ],
-  "author": "Jigar Dafda <jigar.dafda@gmail.com>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jigardafda/grunt-folderWiseConcat/issues"
-  }
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jigardafda/grunt-folderWiseConcat/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin",
+    "concat",
+    "folder",
+    "directory"
+  ]
 }
