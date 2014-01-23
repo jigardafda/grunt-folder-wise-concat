@@ -50,7 +50,7 @@ module.exports = function (grunt) {
 					}
 				}).map(function (file) {
 					return grunt.file.read(file);
-				}).join(options.separator);
+				}).join(options.separator); // concating using seprator provided in the options 
 
 				// write concatenated file's result
 				grunt.file.write(f.dest, out);
