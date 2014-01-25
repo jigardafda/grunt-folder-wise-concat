@@ -83,4 +83,9 @@ grunt.initConfig({
 ```
 
 ## Release History
-_(Nothing yet)_
+
+version 0.2.0:
+	`__order.json` file support added.
+Version 0.1.0:
+	initial release.
+
