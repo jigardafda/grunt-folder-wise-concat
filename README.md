@@ -92,8 +92,9 @@ Folder structure for below examples.
 	|   |       facebook.txt			// facebook
 	|   |       google.txt			    // google
 	|   |       twitter.txt			    // twitter
-	|   |       __order.json		 	// { outputFile='../../' ,
-	|   |								//	 files=
+	|   |       __order.json		 	// { 
+	|	|								//	 outputFile: '../../orderFileExp.txt',
+	|   |								//	 files:
 	|   |								//		[
 	|   |								//			'facebook.txt',
 	|   |								//			'google.txt'
@@ -116,7 +117,7 @@ Folder structure for below examples.
 	|       google.txt    				// google
 	|       twitter.txt   				// twitter
 	|       __order.json				// {
-	|									//	files=
+	|									//	files:
 	|									//		[
 	|									//			'f*',
 	|									//			'google.txt'
