@@ -79,6 +79,7 @@ Directories which don't have order file will get concatenated in grunt configura
 ### Usage Examples
 
 ###### Folder Structure:
+Folder structure for below examples. 
 ```
   test								 Content of Files
     |   
@@ -139,9 +140,17 @@ grunt.initConfig({
 	}
 });
 ```
+Output files:
+```
+	test
+	|
+	+---SimpleConc.js		// 	simple text 1
+							//	simple text 2
+```
+
 
 #### Concatination with Order File
-Concatination with order file
+Concatination with order file.
 ```js
 grunt.initConfig({
   folderWiseConcat: {
@@ -153,7 +162,7 @@ grunt.initConfig({
   }
 });
 ```
-Output file
+Output files:
 ```
 	test
 	|
@@ -165,7 +174,7 @@ Output file
 ```
 
 #### Multilevel folder concatination 
-Concatination with order file of
+Concatination with order file for multilevel folder input.
 ```js
 grunt.initConfig({
   folderWiseConcat: {
@@ -177,7 +186,7 @@ grunt.initConfig({
   }
 });
 ```
-Output files
+Output files:
 ```
 	test
     |
@@ -195,11 +204,11 @@ Output files
 ## Release History
 
 ##### Version 0.3.0 -(27/01/2013):
-added support mutilevel concatination.
-added support for autoConcatAll, banner & orderFileName options.
+>added support for mutilevel concatination.
+>added support for autoConcatAll, banner & orderFileName options.
 	
 ##### Version 0.2.0 -(25/01/2013):
-`__order.json` file support added.
+>`__order.json` file support added.
 	
 ##### Version 0.1.0 -(20/01/2013):
-initial release.
+>initial release.
