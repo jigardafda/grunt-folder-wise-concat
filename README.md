@@ -29,7 +29,7 @@ grunt.initConfig({
       // Task-specific options go here.
     },
     your_target: {
-      // Target-specific file lists and/or options go here.
+      // Target-specific folder's lists here.
     },
   },
 });
@@ -43,49 +43,163 @@ Default value: `'\n'` (new line)
 
 A string value used to do concat two files.
 
+#### options.orderFileName
+Type: `String`
+Deafult value: `__order.json`
+
+To give order file name other then `__order.json`.
+
+#### options.autoConcatAll
+Type: `Boolean`
+Deafult value: `true`
+
+If `false`, only folder with order file will be processed.  
+
+#### options.banner
+Type: `String` 
+Default: empty string
+
+This string will be prepended to the beginning of the concatenated output. It is processed using grunt.template.process, using the default options.
+
+
+### Order file structure
+Order file must contain array property named `files`.
+If `outputFile` property is provided, it will override grunt configuration destination path and will create file at `outputFile` path. 
+Directories which don't have order file will get concatenated in grunt configuration's destination file only.
+```
+{
+	outputFile='../../output.txt',
+	files=[
+		'file1',
+		'file2'
+	]
+}
+```
+
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do folder wise concatination. So if the `src/folderPath` folder has the files named `Testing` and `123` file had the content `1 2 3` , the generated result would be `Testing, 1 2 3` in `dest/default_options` file.
-
-###### input folder structure:
+###### Folder Structure:
 ```
-	src
-		|__folderPath
-					|_ Testing
-					|_ 123
+  test								 Content of Files
+    |   
+	+---MultiLevel
+	|   +---data
+	|   |       data1.txt				// data 1
+	|   |       data2.txt				// data 2
+	|   |       
+	|   +---orderfile
+	|   |       facebook.txt			 // facebook
+	|   |       google.txt			   // google
+	|   |       twitter.txt			  // twitter
+	|   |       __order.json		 	// { outputFile='../../' ,
+	|   |								//	 files=
+	|   |								//		[
+	|   |								//			'facebook.txt',
+	|   |								//			'google.txt'
+	|   |								//		]
+	|   |								//	}
+	|   |       
+	|   \---simple
+	|       |   simple1.txt				// simple text 1
+	|       |   simple2.txt				// simple text 2
+	|		|
+	|		\---Level2
+	|				level2-1.txt		//  level2-1
+	|				level2-2.txt		//  level2-2
+	|
+	+---OrderFile
+	|       f1.txt						// f1
+	|       f2.txt						// f2
+	|       f3.txt						// f3
+	|       facebook.txt				// facebook
+	|       google.txt    				// google
+	|       twitter.txt   				// twitter
+	|       __order.json				// {
+	|									//	files=
+	|									//		[
+	|									//			'f*',
+	|									//			'google.txt'
+	|									//		]
+	|									//	}
+	|       
+	\---SimpleConc
+			simple1.txt  				// simple 1
+			simple2.txt  				// simple 2
 ```
 
+#### Simple Concatination
+Grunt task for a folder concatination.
 ```js
 grunt.initConfig({
   folderWiseConcat: {
-    options: {},
-    folders: {
-      'dest/default_options': ['src/folderPath']
-    }
-  }
+    SimpleConc: {
+		files: {
+			'test/SimpleConc.js': ['test/SimpleConc']
+		}
+	}
 });
 ```
 
-#### Custom Options
-
+#### Concatination with Order File
+Concatination with order file
 ```js
 grunt.initConfig({
   folderWiseConcat: {
-    options: {
-      separator: ' '
-    },
-    files: {
-      'dest/default_options': ['src/folderPath']
-    }
+    OrderFile: {
+		files: {
+			'test/OrderFile.js': ['test/OrderFile']
+		}
+	}
   }
 });
+```
+Output file
+```
+	test
+	|
+	+---OrderFile.js		// 	f1
+							//	f2
+							//	f3
+							//	facebook
+							//	google
+```
+
+#### Multilevel folder concatination 
+Concatination with order file of
+```js
+grunt.initConfig({
+  folderWiseConcat: {
+    MultiLevel: {
+		files: {
+			'test/MultiLevel.js': ['test/MultiLevel/**/*']
+		}
+	}
+  }
+});
+```
+Output files
+```
+	test
+    |
+	+--- MultiLevel.js			//  data1
+	|							//  data2
+	|							//  simple text 1
+	|							//  simple text 2
+	|							//  level2-1
+	|							//  level2-2	
+	|						
+    +--- orderFileExp.txt		//  google
+								//	facebook
 ```
 
 ## Release History
 
-version 0.2.0:
+##### Version 0.3.0 -(27/01/2013):
+	added support mutilevel concatination.
+	added support for autoConcatAll, banner & orderFileName options.
+	
+##### Version 0.2.0 -(25/01/2013):
 	`__order.json` file support added.
-Version 0.1.0:
+	
+##### Version 0.1.0 -(20/01/2013):
 	initial release.
-

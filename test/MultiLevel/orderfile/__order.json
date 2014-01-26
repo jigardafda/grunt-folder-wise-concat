@@ -1,0 +1,7 @@
+{
+	"outputFile": "../../orderFileExp.txt",
+	"files":[
+		"google.txt",
+		"facebook.txt"
+	]
+}
