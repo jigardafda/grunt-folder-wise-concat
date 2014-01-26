@@ -88,9 +88,9 @@ Directories which don't have order file will get concatenated in grunt configura
 	|   |       data2.txt				// data 2
 	|   |       
 	|   +---orderfile
-	|   |       facebook.txt			 // facebook
-	|   |       google.txt			   // google
-	|   |       twitter.txt			  // twitter
+	|   |       facebook.txt			// facebook
+	|   |       google.txt			    // google
+	|   |       twitter.txt			    // twitter
 	|   |       __order.json		 	// { outputFile='../../' ,
 	|   |								//	 files=
 	|   |								//		[
@@ -195,11 +195,11 @@ Output files
 ## Release History
 
 ##### Version 0.3.0 -(27/01/2013):
-	added support mutilevel concatination.
-	added support for autoConcatAll, banner & orderFileName options.
+added support mutilevel concatination.
+added support for autoConcatAll, banner & orderFileName options.
 	
 ##### Version 0.2.0 -(25/01/2013):
-	`__order.json` file support added.
+`__order.json` file support added.
 	
 ##### Version 0.1.0 -(20/01/2013):
-	initial release.
+initial release.
