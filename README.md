@@ -63,15 +63,15 @@ This string will be prepended to the beginning of the concatenated output. It is
 
 
 ### Order file structure
-Order file must contain array property named `files`.
+Order file must contain valid json only. Order file must contain array property named `files`.
 If `outputFile` property is provided, it will override grunt configuration destination path and will create file at `outputFile` path. 
 Directories which don't have order file will get concatenated in grunt configuration's destination file only.
 ```
 {
-	outputFile='../../output.txt',
-	files=[
-		'file1',
-		'file2'
+	"outputFile" : "../../output.txt",
+	"files" : [
+		"file1",
+		"file2"
 	]
 }
 ```
@@ -93,11 +93,11 @@ Folder structure for below examples.
 	|   |       google.txt			    // google
 	|   |       twitter.txt			    // twitter
 	|   |       __order.json		 	// { 
-	|	|								//	 outputFile: '../../orderFileExp.txt',
-	|   |								//	 files:
+	|	|								//	 "outputFile": "../../orderFileExp.txt",
+	|   |								//	 "files":
 	|   |								//		[
-	|   |								//			'facebook.txt',
-	|   |								//			'google.txt'
+	|   |								//			"facebook.txt",
+	|   |								//			"google.txt"
 	|   |								//		]
 	|   |								//	}
 	|   |       
@@ -117,10 +117,10 @@ Folder structure for below examples.
 	|       google.txt    				// google
 	|       twitter.txt   				// twitter
 	|       __order.json				// {
-	|									//	files:
+	|									//	"files":
 	|									//		[
-	|									//			'f*',
-	|									//			'google.txt'
+	|									//			"f*",
+	|									//			"google.txt"
 	|									//		]
 	|									//	}
 	|       
