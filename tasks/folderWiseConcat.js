@@ -9,15 +9,14 @@
 /*global module,require*/
 module.exports = function (grunt) {
 	'use strict';
-
+	var path = require('path'), fs = require('fs');
 	grunt.registerMultiTask('folderWiseConcat', 'Grunt plug-in to concatenate files folder wise.', function () {
-		var path = require('path'), fs = require('fs'),
-			orderFile = require('./orderFileHandler'),
+		var orderFile = require('./orderFileHandler'),
 			options = this.options({
 				separator: '\n', // Concate Seprator
 				orderFileName: "__order.json",
 				autoConcatAll: true,
-				banner:''
+				banner: ''
 			}),
 			destTrack = [];
 
@@ -74,6 +73,6 @@ module.exports = function (grunt) {
 			});
 		});
 		// Print a success message.
-		grunt.log.writeln( '-> ' + destTrack.length + ' concatenated file(s) created.');
+		grunt.log.writeln('-> ' + destTrack.length + ' concatenated file(s) created.');
 	});
 };
