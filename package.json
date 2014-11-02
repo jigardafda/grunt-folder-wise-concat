@@ -1,23 +1,23 @@
 {
-  "name": "grunt-folderwiseconcat",
+  "name": "grunt-folder-wise-concat",
   "description": "Grunt plug-in to concatenate files folder wise.",
   "version": "0.3.2",
-  "homepage": "https://github.com/jigardafda/grunt-folderWiseConcat",
+  "homepage": "https://github.com/jigardafda/grunt-folder-wise-concat",
   "author": {
     "name": "Jigar Dafda",
     "email": "jigar.dafda@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jigardafda/grunt-folderWiseConcat.git"
+    "url": "https://github.com/jigardafda/grunt-folder-wise-concat.git"
   },
   "bugs": {
-    "url": "https://github.com/jigardafda/grunt-folderWiseConcat/issues"
+    "url": "https://github.com/jigardafda/grunt-folder-wise-concat/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/jigardafda/grunt-folderWiseConcat/blob/master/LICENSE-MIT"
+      "url": "https://github.com/jigardafda/grunt-folder-wise-concat/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
