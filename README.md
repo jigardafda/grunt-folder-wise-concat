@@ -1,4 +1,4 @@
-# grunt-folderWiseConcat
+# grunt-folder-wise-concat
 
 > Grunt plug-in to concatenate files folder wise.
 
@@ -17,9 +17,10 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-folderWiseConcat');
 ```
 
-## The "folderWiseConcat" task
+## The "folder-wise-concat" task
 
 ### Overview
+
 In your project's Gruntfile, add a section named `folderWiseConcat` to the data object passed into `grunt.initConfig()`.
 
 ```js
@@ -37,25 +38,25 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### separator
 Type: `String`
 Default value: `'\n'` (new line)
 
 A string value used to do concat two files.
 
-#### options.orderFileName
+#### orderFileName
 Type: `String`
 Deafult value: `__order.json`
 
 To give order file name other then `__order.json`.
 
-#### options.autoConcatAll
+#### autoConcatAll
 Type: `Boolean`
 Deafult value: `true`
 
 If `false`, only folder with order file will be processed.  
 
-#### options.banner
+#### banner
 Type: `String` 
 Default: empty string
 
@@ -63,9 +64,10 @@ This string will be prepended to the beginning of the concatenated output. It is
 
 
 ### Order file structure
-Order file must contain valid json only. Order file must contain array property named `files`.
-If `outputFile` property is provided, it will override grunt configuration destination path and will create file at `outputFile` path. 
+Order file must contain valid json only. Order file will have an array property named `files` to that you will provide files to be concatenated.
+if `outputFile` property is provided, concatenated will get created at `outputFile` provided path otherwise use grunt configuration destination path will be used for outputing concatenated file. 
 Directories which don't have order file will get concatenated in grunt configuration's destination file only.
+
 ```
 {
 	"outputFile" : "../../output.txt",
@@ -130,7 +132,9 @@ Folder structure for below examples.
 ```
 
 #### Simple Concatination
+
 Grunt task for a folder concatination.
+
 ```js
 grunt.initConfig({
   folderWiseConcat: {
@@ -141,6 +145,7 @@ grunt.initConfig({
 	}
 });
 ```
+
 Output files:
 ```
 	test
@@ -151,7 +156,9 @@ Output files:
 
 
 #### Concatination with Order File
+
 Concatination with order file.
+
 ```js
 grunt.initConfig({
   folderWiseConcat: {
@@ -163,6 +170,7 @@ grunt.initConfig({
   }
 });
 ```
+
 Output files:
 ```
 	test
@@ -175,7 +183,9 @@ Output files:
 ```
 
 #### Multilevel folder concatination 
+
 Concatination with order file for multilevel folder input.
+
 ```js
 grunt.initConfig({
   folderWiseConcat: {
@@ -187,6 +197,7 @@ grunt.initConfig({
   }
 });
 ```
+
 Output files:
 ```
 	test
