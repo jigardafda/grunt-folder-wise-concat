@@ -35,9 +35,9 @@
     "grunt": "~0.4.1"
   },
   "keywords": [
-    "grunt plugin",
-	"ordered concat",
-	"order",
+    "gruntplugin",
+    "ordered concat",
+    "order",
     "concat",
     "folder",
     "directory"
